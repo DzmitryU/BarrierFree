@@ -1,9 +1,8 @@
 package by.ulezla.entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
-
 
 /**
  * The persistent class for the element database table.
@@ -23,18 +22,22 @@ public class Element implements Serializable {
 
 	private String name;
 
-	//bi-directional many-to-many association to Organization
-	@ManyToMany
-	@JoinTable(
-		name="organization_has_element"
-		, joinColumns={
-			@JoinColumn(name="element_id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="organization_id")
-			}
-		)
-	private List<Organization> organizations;
+    //bi-directional many-to-many association to Element
+    @ManyToMany(mappedBy="elements")
+    private List<Organization> organizations;
+
+////	//bi-directional many-to-many association to Organization
+////	@ManyToMany
+////	@JoinTable(
+////		name="organization_has_element"
+////		, joinColumns={
+////			@JoinColumn(name="element_id")
+////			}
+////		, inverseJoinColumns={
+////			@JoinColumn(name="organization_id")
+////			}
+////		)
+//	private List<Organization> organizations;
 
 	public Element() {
 	}
