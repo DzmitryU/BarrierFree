@@ -35,7 +35,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<context:component-scan base-package="by.havefun" />
+	<context:component-scan base-package="by.ulezla" />
 	<context:annotation-config/>
 	<mvc:default-servlet-handler/>
 	

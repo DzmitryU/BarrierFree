@@ -14,7 +14,7 @@
         <remember-me key="eiasKey" token-validity-seconds="8640000" user-service-ref="userDetails"/>
     </http>
 
-    <beans:bean id="userDetails" class="by.havefun.security.MyUserDetails"/>
+    <beans:bean id="userDetails" class="by.ulezla.security.MyUserDetails"/>
 
     <authentication-manager>
         <authentication-provider user-service-ref="userDetails"/>
