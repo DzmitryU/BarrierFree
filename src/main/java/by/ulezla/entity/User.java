@@ -15,10 +15,9 @@ import java.util.List;
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-
     public static String COL_EMAIL = "email";
 
-	@Id
+    @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
@@ -30,16 +29,19 @@ public class User implements Serializable {
 
 	private String password;
 
-	@JsonIgnore
+	//bi-directional many-to-one association to Comment
 	@OneToMany(mappedBy="user")
+    @JsonIgnore
 	private List<Comment> comments;
 
-    @JsonIgnore
+	//bi-directional many-to-one association to Organization
 	@OneToMany(mappedBy="user")
+    @JsonIgnore
 	private List<Organization> organizations;
 
-    @JsonIgnore
+	//bi-directional many-to-one association to Role
 	@ManyToOne(fetch=FetchType.LAZY)
+    @JsonIgnore
 	private Role role;
 
 	public User() {
@@ -136,6 +138,5 @@ public class User implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
 
 }

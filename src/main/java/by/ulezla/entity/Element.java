@@ -1,8 +1,9 @@
 package by.ulezla.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
+
 
 /**
  * The persistent class for the element database table.
@@ -17,27 +18,25 @@ public class Element implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-    @Lob
-    private String description;
+	@Lob
+	private String description;
+
+	private String image;
 
 	private String name;
 
-    //bi-directional many-to-many association to Element
-    @ManyToMany(mappedBy="elements")
-    private List<Organization> organizations;
-
-////	//bi-directional many-to-many association to Organization
-////	@ManyToMany
-////	@JoinTable(
-////		name="organization_has_element"
-////		, joinColumns={
-////			@JoinColumn(name="element_id")
-////			}
-////		, inverseJoinColumns={
-////			@JoinColumn(name="organization_id")
-////			}
-////		)
-//	private List<Organization> organizations;
+	//bi-directional many-to-many association to Organization
+	@ManyToMany
+	@JoinTable(
+		name="organization_has_element"
+		, joinColumns={
+			@JoinColumn(name="element_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="organization_id")
+			}
+		)
+	private List<Organization> organizations;
 
 	public Element() {
 	}
@@ -50,15 +49,23 @@ public class Element implements Serializable {
 		this.id = id;
 	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return this.description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getName() {
+	public String getImage() {
+		return this.image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getName() {
 		return this.name;
 	}
 

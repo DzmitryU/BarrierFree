@@ -21,7 +21,7 @@ public class Comment implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
-    @Lob
+	@Lob
 	private String text;
 
 	//bi-directional many-to-one association to Organization
@@ -51,15 +51,15 @@ public class Comment implements Serializable {
 		this.date = date;
 	}
 
-    public String getText() {
-        return text;
-    }
+	public String getText() {
+		return this.text;
+	}
 
-    public void setText(String text) {
-        this.text = text;
-    }
+	public void setText(String text) {
+		this.text = text;
+	}
 
-    public Organization getOrganization() {
+	public Organization getOrganization() {
 		return this.organization;
 	}
 
