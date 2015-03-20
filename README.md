@@ -8,6 +8,7 @@ A =Project=
 
 B =Report=
 1. Change SUMMARY
+    1) Update number of elements
 2. Change OF THE REFERENCE NUMERALS
 3. Write INTRODUCTION
 4. Write CHAPTER 1
