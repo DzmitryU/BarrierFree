@@ -7,6 +7,7 @@ A =Project=
 4. Add search grid
 
 B =Report=
+0. Create task
 1. Change SUMMARY
     1) Update number of elements
 2. Change OF THE REFERENCE NUMERALS
@@ -14,8 +15,8 @@ B =Report=
     1) Format data
 4. Write CHAPTER 1
     1) Explore simular solutions - last update 2015-03-21
-    2) Describe instruments and technologies
-    3) Write Chapter 1 conclusion
+    2) Describe instruments and technologies - last update 2015-03-23
+    3) Write Chapter 1 conclusion  - last update 2015-03-22
     4) Check formating
 5. Write CHAPTER 2
 6. Write CHAPTER 3
@@ -24,4 +25,10 @@ B =Report=
 9. Write Application
 
 C =Presentation=
+    1) Add interface samples
+    2) Add function requirements
+    3) Check Use Case
+    4) Add class diagram
+    5) Add activity diagrams
+    6) Add conclusion
 
