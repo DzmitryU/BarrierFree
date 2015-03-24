@@ -44,4 +44,11 @@ public class TestController {
         model.addAttribute("appName", "bfree");
         return "result";
     }
+
+    @RequestMapping(value = "/map", method = RequestMethod.GET)
+    public String showMap(Model model) {
+        model.addAttribute("result","Map page     " +System.currentTimeMillis());
+        model.addAttribute("appName", "bfree");
+        return "map";
+    }
 }

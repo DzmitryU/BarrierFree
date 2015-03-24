@@ -6,7 +6,6 @@
 		<div class="container_12">
 			<div class="grid_12">
 				<div class="wrapper">
-					<a href="/<c:out value="${appName}" />" class="logo">AFISHA</a>
 					<nav>
 						<ul class="menu">
 							<c:forEach var="item" items="${menuItems}">
