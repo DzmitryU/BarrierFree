@@ -33,6 +33,10 @@ public class Organization implements Serializable {
 	@ManyToMany(mappedBy="organizations")
 	private List<Element> elements;
 
+	//bi-directional many-to-one association to Category
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Category category;
+
 	//bi-directional many-to-one association to Coordinate
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Coordinate coordinate;
@@ -104,6 +108,14 @@ public class Organization implements Serializable {
 
 	public void setElements(List<Element> elements) {
 		this.elements = elements;
+	}
+
+	public Category getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public Coordinate getCoordinate() {

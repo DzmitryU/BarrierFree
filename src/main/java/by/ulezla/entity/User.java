@@ -1,9 +1,7 @@
 package by.ulezla.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -15,9 +13,8 @@ import java.util.List;
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-    public static String COL_EMAIL = "email";
 
-    @Id
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
@@ -31,17 +28,14 @@ public class User implements Serializable {
 
 	//bi-directional many-to-one association to Comment
 	@OneToMany(mappedBy="user")
-    @JsonIgnore
 	private List<Comment> comments;
 
 	//bi-directional many-to-one association to Organization
 	@OneToMany(mappedBy="user")
-    @JsonIgnore
 	private List<Organization> organizations;
 
 	//bi-directional many-to-one association to Role
 	@ManyToOne(fetch=FetchType.LAZY)
-    @JsonIgnore
 	private Role role;
 
 	public User() {
