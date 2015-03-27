@@ -1,5 +1,7 @@
 package by.ulezla.entity;
 
+import org.springframework.context.annotation.Lazy;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -24,14 +26,17 @@ public class Category implements Serializable {
 
 	//bi-directional many-to-one association to Category
 	@ManyToOne(fetch=FetchType.LAZY)
+    @Lazy
 	private Category category;
 
 	//bi-directional many-to-one association to Category
 	@OneToMany(mappedBy="category")
+    @Lazy
 	private List<Category> categories;
 
 	//bi-directional many-to-one association to Organization
 	@OneToMany(mappedBy="category")
+    @Lazy
 	private List<Organization> organizations;
 
 	public Category() {

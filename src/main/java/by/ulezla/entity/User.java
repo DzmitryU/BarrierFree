@@ -1,7 +1,7 @@
 package by.ulezla.entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -13,6 +13,7 @@ import java.util.List;
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
+    public static String COL_EMAIL = "email";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

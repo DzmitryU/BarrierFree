@@ -4,6 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
+        <mapping class="by.ulezla.entity.Category"/>
         <mapping class="by.ulezla.entity.Comment"/>
         <mapping class="by.ulezla.entity.Coordinate"/>
         <mapping class="by.ulezla.entity.Element"/>

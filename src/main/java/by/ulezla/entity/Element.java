@@ -1,5 +1,7 @@
 package by.ulezla.entity;
 
+import org.springframework.context.annotation.Lazy;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -36,6 +38,7 @@ public class Element implements Serializable {
 			@JoinColumn(name="organization_id")
 			}
 		)
+    @Lazy
 	private List<Organization> organizations;
 
 	public Element() {

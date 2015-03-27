@@ -1,5 +1,7 @@
 package by.ulezla.entity;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -30,6 +32,7 @@ public class Comment implements Serializable {
 
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch=FetchType.LAZY)
+    @Lazy
 	private User user;
 
 	public Comment() {

@@ -1,7 +1,9 @@
 package by.ulezla.entity;
 
-import java.io.Serializable;
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -22,6 +24,7 @@ public class Role implements Serializable {
 
 	//bi-directional many-to-one association to User
 	@OneToMany(mappedBy="role")
+    @Lazy
 	private List<User> users;
 
 	public Role() {

@@ -1,7 +1,9 @@
 package by.ulezla.entity;
 
-import java.io.Serializable;
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -24,6 +26,7 @@ public class Coordinate implements Serializable {
 
 	//bi-directional many-to-one association to Organization
 	@OneToMany(mappedBy="coordinate")
+    @Lazy
 	private List<Organization> organizations;
 
 	public Coordinate() {
