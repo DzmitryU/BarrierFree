@@ -15,26 +15,12 @@
 	media="screen">
 <link rel="stylesheet" href="/<c:out value="${appName}" />/css/style.css" type="text/css"
 	media="screen">
+
 <script type="text/javascript" src="/<c:out value="${appName}" />/js/jquery.js"></script>
 <script type="text/javascript" src="/<c:out value="${appName}" />/js/jquery-migrate-1.1.1.js"></script>
 
 <!-- Put this script tag to the <head> of your page -->
 <script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
-<!-- 
-<link rel="stylesheet" href="/<c:out value="${appName}" />/css/camera.css" type="text/css" media="screen">
-<script type="text/javascript" src="/<c:out value="${appName}" />/js/camera.js"></script>
-<script type="text/javascript" src="/<c:out value="${appName}" />/js/jquery.easing.1.3.js"></script>
-<script>
-    jQuery(function(){      
-      jQuery('#camera_wrap_1').camera({
-        height: '317px',
-        loader: false,
-        pagination: false,
-        thumbnails: false
-      });
-    });
-</script>
--->
 
 <!--[if lt IE 8]><div style='text-align:center'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/img/upgrade.jpg"border="0"alt=""/></a></div><![endif]-->
 <!--[if lt IE 9]>
@@ -46,24 +32,4 @@
 	   	<link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
     <![endif]-->
 
-
-    <style>
-        #map-canvas {
-            width: 1200px;
-            height: 800px;
-        }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>
-        function initialize() {
-            var mapCanvas = document.getElementById('map-canvas');
-            var mapOptions = {
-                center: new google.maps.LatLng(44.5403, -78.5463),
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-            var map = new google.maps.Map(mapCanvas, mapOptions)
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
 </head>
