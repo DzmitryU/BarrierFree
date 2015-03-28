@@ -1,4 +1,3 @@
-<%@page import="temp.JSPHelper"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -18,9 +17,6 @@
 
 <script type="text/javascript" src="/<c:out value="${appName}" />/js/jquery.js"></script>
 <script type="text/javascript" src="/<c:out value="${appName}" />/js/jquery-migrate-1.1.1.js"></script>
-
-<!-- Put this script tag to the <head> of your page -->
-<script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
 
 <!--[if lt IE 8]><div style='text-align:center'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/img/upgrade.jpg"border="0"alt=""/></a></div><![endif]-->
 <!--[if lt IE 9]>

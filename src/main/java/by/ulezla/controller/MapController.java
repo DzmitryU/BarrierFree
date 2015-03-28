@@ -2,6 +2,7 @@ package by.ulezla.controller;
 
 import by.ulezla.dao.BaseDAO;
 import by.ulezla.entity.Organization;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,8 @@ public class MapController {
     @RequestMapping(value = "/map", method = RequestMethod.GET)
     public String showMap(Model model) {
         List<Organization> organizations = baseDAO.getEntitys(Organization.class);
-        model.addAttribute("points", organizations);
+        Hibernate.initialize(organizations);
+        model.addAttribute("organizations", organizations);
         model.addAttribute("appName", "bfree");
         return "map";
     }

@@ -13,6 +13,13 @@
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/map.js"></script>
     <script>
         google.maps.event.addDomListener(window, 'load', initialize);
+        $(document).ready(function() {
+            <c:forEach var="organization" items="${organizations}">
+                var lat = <c:out value="${organization.coordinate.x}"/>;
+                var lng = <c:out value="${organization.coordinate.x}"/>;
+                setMarker(lat, lng);
+            </c:forEach>
+        });
     </script>
 </head>
 <body>
@@ -26,7 +33,6 @@
                 <div class="grid_7">
                     <div id="map-canvas"></div>
                 </div>
-
             </div>
         </div>
     </div>

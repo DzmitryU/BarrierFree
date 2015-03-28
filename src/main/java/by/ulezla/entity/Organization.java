@@ -2,8 +2,8 @@ package by.ulezla.entity;
 
 import org.springframework.context.annotation.Lazy;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -42,7 +42,7 @@ public class Organization implements Serializable {
 	private Category category;
 
 	//bi-directional many-to-one association to Coordinate
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Coordinate coordinate;
 
 	//bi-directional many-to-one association to User
