@@ -1,7 +1,6 @@
 package by.ulezla.controller;
 
 import by.ulezla.dao.BaseDAO;
-import by.ulezla.entity.Organization;
 import by.ulezla.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,13 +44,5 @@ public class TestController {
         model.addAttribute("result","OLOLO123     " +System.currentTimeMillis());
         model.addAttribute("appName", "bfree");
         return "result";
-    }
-
-    @RequestMapping(value = "/map", method = RequestMethod.GET)
-    public String showMap(Model model) {
-        List<Organization> organizations = baseDAO.getEntitys(Organization.class);
-        model.addAttribute("points", organizations);
-        model.addAttribute("appName", "bfree");
-        return "map";
     }
 }
