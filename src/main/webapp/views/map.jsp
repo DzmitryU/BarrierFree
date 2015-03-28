@@ -16,8 +16,9 @@
         $(document).ready(function() {
             <c:forEach var="organization" items="${organizations}">
                 var lat = <c:out value="${organization.coordinate.x}"/>;
-                var lng = <c:out value="${organization.coordinate.x}"/>;
-                setMarker(lat, lng);
+                var lng = <c:out value="${organization.coordinate.y}"/>;
+                var name =  "<c:out value="${organization.name}"/>";
+                addMarker(lat, lng, name);
             </c:forEach>
         });
     </script>
