@@ -1,12 +1,12 @@
 package by.ulezla.utils.view;
 
-public class MenuItems {
+public class MenuItem {
 	
 	private String name;
 	private String link;
 	
 	
-	public MenuItems(String link, String name) {
+	public MenuItem(String link, String name) {
 	    super();
 	    this.name = name;
 	    this.link = link;
@@ -42,7 +42,7 @@ public class MenuItems {
 		    return false;
 	    if (getClass() != obj.getClass())
 		    return false;
-	    MenuItems other = (MenuItems) obj;
+	    MenuItem other = (MenuItem) obj;
 	    if (link == null) {
 		    if (other.link != null)
 			    return false;
