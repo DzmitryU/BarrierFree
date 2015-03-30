@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/map.css" type="text/css"
           media="screen">
 
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/map.js"></script>
+    <script type="text/javascript" src="/<c:out value="${appName}" />/js/google.maps.api.js"></script>
     <script>
         google.maps.event.addDomListener(window, 'load', initialize);
         $(document).ready(function() {

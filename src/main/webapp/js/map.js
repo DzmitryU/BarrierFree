@@ -1,13 +1,15 @@
 var map;
 var markers = [];
+var mapOptions = {
+    center: new google.maps.LatLng(53.683446, 23.83662),
+    zoom: 15,
+    maxZoom:18,
+    minZoom:12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+}
 
 function initialize() {
     var mapCanvas = document.getElementById('map-canvas');
-    var mapOptions = {
-        center: new google.maps.LatLng(53.683446, 23.83662),
-        zoom: 16,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
 
     map = new google.maps.Map(mapCanvas, mapOptions);
     var bounds = new google.maps.LatLngBounds();
@@ -17,6 +19,7 @@ function initialize() {
         bounds.extend(markers[index].getPosition());
     }
     map.fitBounds(bounds);
+    map.setCenter(bounds.getCenter());
 }
 
 function addMarker(lat, lng, name) {

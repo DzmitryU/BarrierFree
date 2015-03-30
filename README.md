@@ -3,7 +3,7 @@
 A =Project=
 1. Change style
 2. Add element catalog
-3. Add map page
+3. Add map page - last update 2015-03-30
 4. Add search grid
 
 B =Report=
@@ -24,11 +24,11 @@ B =Report=
 8. Write REFERENCES
 9. Write Application
 
-C =Presentation=
-    1) Add interface samples
-    2) Add function requirements
-    3) Check Use Case
-    4) Add class diagram
-    5) Add activity diagrams
-    6) Add conclusion
+C =Presentation= - last update 2015-03-30
+    1) Add interface samples - last update 2015-03-30
+    2) Add function requirements - last update 2015-03-30
+    3) Check Use Case - last update 2015-03-30
+    4) Add class diagram - last update 2015-03-30
+    5) Add activity diagrams - last update 2015-03-30
+    6) Add conclusion - last update 2015-03-30
 
