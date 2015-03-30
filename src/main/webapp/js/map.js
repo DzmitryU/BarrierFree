@@ -1,17 +1,17 @@
 var map;
 var markers = [];
 var mapOptions = {
-    center: new google.maps.LatLng(53.683446, 23.83662),
     zoom: 15,
     maxZoom:18,
-    minZoom:12,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    minZoom:12
 }
 
 function initialize() {
     var mapCanvas = document.getElementById('map-canvas');
-
     map = new google.maps.Map(mapCanvas, mapOptions);
+    map.setCenter(new google.maps.LatLng(53.683446, 23.83662));
+    map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+
     var bounds = new google.maps.LatLngBounds();
 
     for (index = 0; index < markers.length; ++index) {
