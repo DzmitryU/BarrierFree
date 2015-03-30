@@ -3,7 +3,8 @@
 A =Project=
 1. Change style
 2. Add element catalog
-3. Add map page - last update 2015-03-30
+3. Add map page
+    1) Make infowindow
 4. Add search grid
 
 B =Report=

@@ -18,7 +18,7 @@
                 var lat = <c:out value="${organization.coordinate.x}"/>;
                 var lng = <c:out value="${organization.coordinate.y}"/>;
                 var name =  "<c:out value="${organization.name}"/>";
-                addMarker(lat, lng, name);
+                addOrganization(lat, lng, name);
             </c:forEach>
         });
     </script>
