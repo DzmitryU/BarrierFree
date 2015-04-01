@@ -28,4 +28,11 @@ public class MapController extends AbstractController {
         model.addAttribute("appName", "bfree");
         return "map";
     }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register(Model model, Principal principal) {
+        setRequirements(model, principal);
+        model.addAttribute("appName", "bfree");
+        return "register";
+    }
 }

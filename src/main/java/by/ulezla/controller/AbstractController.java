@@ -11,10 +11,12 @@ public abstract class AbstractController {
         ArrayList<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem("info", "Информирование"));
         menuItems.add(new MenuItem("map", "Поиск / Карта"));
+        menuItems.add(new MenuItem("info", "Полезные ссылки"));
         if (principal != null) {
             menuItems.add(new MenuItem("profile", "Личный кабинет"));
+        } else {
+            menuItems.add(new MenuItem("register", "Регистрация / Вход"));
         }
-        menuItems.add(new MenuItem("info", "Полезные ссылки"));
 
         model.addAttribute("menuItems", menuItems);
     }

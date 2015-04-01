@@ -370,7 +370,7 @@ header{
 		padding: 5px 0 20px 0;
 	}
 	.pad1 {
-	padding-bottom: 180px;
+	padding-bottom: 30px;
 }
 
 iframe {
@@ -456,7 +456,7 @@ iframe {
 	}
 /*===== footer =====*/
 footer {
-	height:71px;
+	height:20px;
 	color: #9a9a9a;
 	font-weight: 300;
 	padding-top: 40px;

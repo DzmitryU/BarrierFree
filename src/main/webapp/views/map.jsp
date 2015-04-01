@@ -27,16 +27,15 @@
         });
 
         // HTree
-        $('#html').jstree();
-        $('#htree').jstree({
-            'core' : {
-                'data' : [
-                    { "text" : "Root node", "children" : [
-                        { "text" : "Child node 1" },
-                        { "text" : "Child node 2" }
-                    ]}
-                ]
-            }
+        $(function() {
+            $('#htree').jstree(
+                    {
+                        "checkbox" : {
+                            "keep_selected_style": false
+                        },
+                        "plugins" : ["checkbox"]
+                    }
+            );
         });
     </script>
 </head>
@@ -50,7 +49,55 @@
             <div class="wrapper h-pad">
                 <div class="grid_7">
                     <div id="map-canvas"></div>
-                    <div id="htree"></div>
+                </div>
+                <div class="grid_8">
+                    <div id="htree">
+                        <ul>
+                            <li>Кафе, рестораны
+                                <ul>
+                                    <li>Бары</li>
+                                    <li>Кафе</li>
+                                    <li>Рестораны</li>
+                                </ul>
+                            </li>
+                            <li>Спорт
+                                <ul>
+                                    <li>Тренажерные залы</li>
+                                    <li>Клубы
+                                        <ul>
+                                            <li>Шахматно-шашечный клуб</li>
+                                            <li>Бойцовский клуб</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Здравоохранение
+                                <ul>
+                                    <li>Аптеки
+                                        <ul>
+                                            <li>Дежурная аптека</li>
+                                            <li>Фито аптека</li>
+                                            <li>Аптека №2</li>
+                                        </ul>
+                                    </li>
+                                    <li>Поликлиники</li>
+                                </ul>
+                            </li>
+                            <li>Образование
+                                <ul>
+                                    <li>Школы</li>
+                                    <li>Университеты</li>
+                                </ul>
+                            </li>
+                            <li>Культура
+                                <ul>
+                                    <li>Кинотеатры</li>
+                                    <li>Театры</li>
+                                </ul>
+                            </li>
+                            <li>Прочее</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
