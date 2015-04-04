@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/map/map.css" type="text/css"
           media="screen">
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/tree/style.min.css" type="text/css" />
+    <link rel="stylesheet" href="/<c:out value="${appName}" />/css/tree/tree.css" type="text/css"
+          media="screen">
 
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/map/google.maps.api.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/map/map.js"></script>

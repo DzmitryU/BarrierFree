@@ -51,18 +51,7 @@ public class BaseDAO {
         return (T) sessionFactory.getCurrentSession().get(entityClass, id);
     }
 
-//    @SuppressWarnings("unchecked")
-//    public <T> List<T> getListEntity(Class<T> entityClass) {
-//        String query = "SELECT entity FROM " + entityClass.getCanonicalName() + " entity";
-//        return (List<T>) createQuery(query).list();
-//    }
-//    {
-//    criteria.add(Restrictions.like(string, object));
-//    criteria.add(Restrictions.like(string2, object2));
-//    }
 
-
-    
     /**
      *  
      * @param entityClass 
@@ -165,6 +154,5 @@ public class BaseDAO {
                 return listEntity.get(0);
         }
     }
-
 
 }

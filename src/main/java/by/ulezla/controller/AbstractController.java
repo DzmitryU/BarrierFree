@@ -1,12 +1,26 @@
 package by.ulezla.controller;
 
+import by.ulezla.dao.BaseDAO;
+import by.ulezla.dao.OrganizationDAO;
+import by.ulezla.dao.UserDAO;
 import by.ulezla.utils.view.MenuItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import java.security.Principal;
 import java.util.ArrayList;
 
 public abstract class AbstractController {
+
+    @Autowired
+    BaseDAO baseDAO;
+
+    @Autowired
+    UserDAO userDAO;
+
+    @Autowired
+    OrganizationDAO organizationDAO;
+
     public void setRequirements(Model model, Principal principal) {
         ArrayList<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem("info", "Информирование"));
@@ -15,9 +29,11 @@ public abstract class AbstractController {
         if (principal != null) {
             menuItems.add(new MenuItem("profile", "Личный кабинет"));
         } else {
-            menuItems.add(new MenuItem("register", "Регистрация / Вход"));
+            menuItems.add(new MenuItem("registration", "Регистрация / Вход"));
         }
 
         model.addAttribute("menuItems", menuItems);
+
+        model.addAttribute("appName", "bfree");
     }
 }

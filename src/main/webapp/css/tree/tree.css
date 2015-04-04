@@ -1,0 +1,7 @@
+ins.jstree-checkbox {
+    display:none;
+}
+
+li[class~="jstree-leaf"] > a > ins.jstree-checkbox {
+   display: inline-block;
+}

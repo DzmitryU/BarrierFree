@@ -15,6 +15,10 @@ import java.util.List;
 @NamedQuery(name="Role.findAll", query="SELECT r FROM Role r")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
+    public static final int ADMIN = 1;
+    public static final int ORGANIZATION = 2;
+    public static final int PERSON = 3;
+
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -34,8 +38,9 @@ public class Role implements Serializable {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public Role setId(int id) {
 		this.id = id;
+        return this;
 	}
 
 	public String getRole() {

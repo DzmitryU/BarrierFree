@@ -23,7 +23,8 @@
 						</h3>
 						<form method="POST" action="registration" id="contact-form">
 							<fieldset>
-								<label><input onblur="if(this.value==''){this.value='Никнейм'}" onfocus="if(this.value=='Никнейм'){this.value=''}" name="nick" value="${nick}" type="text">	</label>
+								<label><input onblur="if(this.value==''){this.value='Имя'}" onfocus="if(this.value=='Имя'){this.value=''}" name="firstname" value="${nick}" type="text">	</label>
+                                <label><input onblur="if(this.value==''){this.value='Фамилия'}" onfocus="if(this.value=='Фамилия'){this.value=''}" name="lastname" value="${nick}" type="text">	</label>
 								<label><input onblur="if(this.value==''){this.value='Email'}" onfocus="if(this.value=='Email'){this.value=''}" name="email" value="${Email}" type="text">	</label>
 								
 								<label>
