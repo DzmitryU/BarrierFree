@@ -43,6 +43,7 @@ public class UserDAO extends BaseDAO {
             EmailManager.send(email, "Восстановление пароля",
                     "Перейдите по ссылке для восстановления пароля. "
                             + "http://localhost:18080/bfree/setnewpassword?userId=" + email);
+            //EmailSender.sendEmail(email);
             return "Пароль выслан Вам на емеил";
         } else {
             return "Пользователя с данным емеилом не существует.";
