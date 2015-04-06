@@ -104,8 +104,14 @@ public class UserController extends AbstractController {
     @RequestMapping(value = "/profile", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
     public String profile(Model model, Principal principal) {
         setRequirements(model, principal);
-        User user = userDAO.getUserFromEmail(principal.getName());
-        model.addAttribute("appUser", user);
-        return "profile";
+        String result = "result";
+        if (principal != null) {
+            User user = userDAO.getUserFromEmail(principal.getName());
+            model.addAttribute("appUser", user);
+            result = "profile";
+        } else {
+            model.addAttribute("result", "Доступ запрещен.");
+        }
+        return  result;
     }
 }
