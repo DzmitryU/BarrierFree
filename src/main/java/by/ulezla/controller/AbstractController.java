@@ -29,7 +29,8 @@ public abstract class AbstractController {
         if (principal != null) {
             menuItems.add(new MenuItem("profile", "Личный кабинет"));
         } else {
-            menuItems.add(new MenuItem("registration", "Регистрация / Вход"));
+            menuItems.add(new MenuItem("registration", "Регистрация"));
+            menuItems.add(new MenuItem("login", "Вход"));
         }
 
         model.addAttribute("menuItems", menuItems);

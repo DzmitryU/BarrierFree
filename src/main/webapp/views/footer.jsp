@@ -11,8 +11,7 @@
 									пожалуйста</a> или <a href="/<c:out value="${appName}" />/login">войди</a>.
 						</c:if>
 						<c:if test="${user}">
-		Привет. ${appUserName}. 
-							<a href="/<c:out value="${appName}" />/event/add">Добавить событие</a>. 
+		Привет. ${appUserName}.
 							<a href="/<c:out value="${appName}" />/profile">Личный кабинет</a>.
 							<a href="/<c:out value="${appName}" />/logout">Выйти</a>
 						</c:if>

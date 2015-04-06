@@ -1,7 +1,6 @@
 package by.ulezla.controller;
 
 import by.ulezla.dao.BaseDAO;
-import by.ulezla.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,10 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
-import java.util.List;
 
 @Controller
-public class TestController {
+public class TestController extends AbstractController {
 
 
     @Autowired
@@ -29,9 +27,9 @@ public class TestController {
      */
     @Transactional
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public @ResponseBody List<User> get(Model model, Principal principal) {
-        List<User> users = baseDAO.getEntitys(User.class);
-        return baseDAO.getEntitys(User.class);
+    public @ResponseBody String getMain(Model model, Principal principal) {
+        setRequirements(model, principal);
+        return "map";
     }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
