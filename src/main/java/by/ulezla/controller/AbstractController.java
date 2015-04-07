@@ -1,10 +1,12 @@
 package by.ulezla.controller;
 
 import by.ulezla.dao.BaseDAO;
+import by.ulezla.dao.CategoryDAO;
 import by.ulezla.dao.OrganizationDAO;
 import by.ulezla.dao.UserDAO;
 import by.ulezla.entity.User;
 import by.ulezla.utils.view.MenuItem;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
@@ -21,6 +23,11 @@ public abstract class AbstractController {
 
     @Autowired
     OrganizationDAO organizationDAO;
+
+    @Autowired
+    CategoryDAO categoryDAO;
+
+    ObjectMapper mapper = new ObjectMapper();
 
     public void setRequirements(Model model, Principal principal) {
 

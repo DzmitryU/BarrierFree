@@ -85,9 +85,14 @@
             }
         ];
         $(function() {
-            $('#htree').jstree({ 'core' : {
-                        'data' : data
-                    } }
+            $('#htree').jstree(
+                    {
+                        "core" :
+                        {
+                            "data" : ${categories}
+                        },
+                        "plugins" : [ "wholerow" ]
+                    }
             );
         });
     </script>

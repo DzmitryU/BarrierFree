@@ -1,42 +1,49 @@
 package by.ulezla.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.context.annotation.Lazy;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
 /**
  * The persistent class for the category database table.
- * 
+ *
  */
 @Entity
 @NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
+    public static final String COL_CATEGORY_ID = "category";
 
-	@Id
+    @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private String image;
 
+    @JsonProperty(value="text")
 	private String name;
 
 	//bi-directional many-to-one association to Category
 	@ManyToOne(fetch=FetchType.LAZY)
     @Lazy
+    @JsonIgnore
 	private Category category;
 
 	//bi-directional many-to-one association to Category
 	@OneToMany(mappedBy="category")
     @Lazy
+    @JsonProperty(value="children")
 	private List<Category> categories;
 
 	//bi-directional many-to-one association to Organization
 	@OneToMany(mappedBy="category")
     @Lazy
+    @JsonIgnore
 	private List<Organization> organizations;
 
 	public Category() {
@@ -118,4 +125,14 @@ public class Category implements Serializable {
 		return organization;
 	}
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", image='" + image + '\'' +
+                ", name='" + name + '\'' +
+                ", categories=" + categories +
+                ", organizations=" + organizations +
+                '}';
+    }
 }
