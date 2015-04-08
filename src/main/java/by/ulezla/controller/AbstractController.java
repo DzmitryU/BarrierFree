@@ -7,6 +7,7 @@ import by.ulezla.dao.UserDAO;
 import by.ulezla.entity.User;
 import by.ulezla.utils.view.MenuItem;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
@@ -27,7 +28,7 @@ public abstract class AbstractController {
     @Autowired
     CategoryDAO categoryDAO;
 
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
     public void setRequirements(Model model, Principal principal) {
 
