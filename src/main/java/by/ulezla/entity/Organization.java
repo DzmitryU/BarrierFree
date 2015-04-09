@@ -15,6 +15,7 @@ import java.util.List;
 @NamedQuery(name="Organization.findAll", query="SELECT o FROM Organization o")
 public class Organization implements Serializable {
 	private static final long serialVersionUID = 1L;
+    public static final String COL_CATEGORY_ID = "category";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

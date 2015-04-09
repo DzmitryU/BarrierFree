@@ -9,14 +9,25 @@
     margin-bottom: auto;
 }
 
-#htree {
+.htree {
     float: left;
     margin-left: 10px;
     border-style: ridge;
     border-width: 5px;
     padding: 5px;
+    width: 13% !important;
 }
 
 #map-page {
     white-space: nowrap;
+}
+
+#hsearch {
+    width: 60%;
+    margin: 5px;
+    padding-left: 15px;
+}
+
+#htree {
+    width: 45%;
 }

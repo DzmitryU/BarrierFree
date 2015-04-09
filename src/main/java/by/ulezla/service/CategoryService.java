@@ -14,4 +14,8 @@ public class CategoryService extends AbstractService {
             initialize(category);
         }
     }
+
+    public void addOrganizationsToCategory(Category category) {
+
+    }
 }

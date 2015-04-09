@@ -17,84 +17,41 @@
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/jstree.min.js"></script>
     <script>
 
-        // Google map
+
         google.maps.event.addDomListener(window, 'load', initialize);
         $(document).ready(function() {
+            // Google map
             <c:forEach var="organization" items="${organizations}">
                 var lat = <c:out value="${organization.coordinate.x}"/>;
                 var lng = <c:out value="${organization.coordinate.y}"/>;
                 var name =  "<c:out value="${organization.name}"/>";
                 addOrganization(lat, lng, name);
             </c:forEach>
-        });
 
-        // HTree
-        var data = [
-            {
-                'text' : 'Кафе, рестораны',
-                'children' : [
-                    { 'text' : 'Бары' },
-                    { 'text' : 'Кафе' },
-                    { 'text' : 'Рестораны' }
-                ]
-            },
-            {
-                'text' : 'Спорт',
-                'children' : [
-                    { 'text' : 'Тренажерные залы',
-                      'children' : [
-                          {'text' : 'Олимп'}
-                      ]
-                    },
-                    { 'text' : 'Клубы',
-                      'children' : [
-                          {'text': 'Бойцовский клуб'},
-                          {'text': 'Шахматно-шашечный клуб'}
-                      ]
-                    }
-                ]
-            },
-            {
-                'text' : 'Здравоохранение',
-                'children' : [
-                    {'text' : 'Аптеки',
-                     'children' : [
-                         {'text' : 'Ночная аптка'},
-                         {'text' : 'Аптека №2'},
-                         {'text' : 'Фитоаптека'}
-                     ]},
-                    {'text' : 'Поликлиники'}
-                ]
-            },
-            {
-                'text' : 'Образование',
-                'children' : [
-                    {'text' : 'Школы'},
-                    {'text' : 'Университеты'}
-                ]
-            },
-            {
-                'text' : 'Культура',
-                'children' : [
-                    {'text' : 'Кинотеатры'},
-                    {'text' : 'Театры'}
-                ]
-            },
-            {
-                'text' : 'Прочее'
-            }
-        ];
-        $(function() {
+            // HTree
+            var data = ${categories};
             $('#htree').jstree(
                     {
                         "core" :
                         {
                             "data" : ${categories}
                         },
-                        "plugins" : [ "wholerow" ]
+                        "plugins" : [ "wholerow", "search" ]
                     }
             );
+
+            // HSearch
+            var to = false;
+            $('#search_field').keyup(function () {
+                if(to) { clearTimeout(to); }
+                to = setTimeout(function () {
+                    var v = $('#search_field').val();
+                    $('#htree').jstree(true).search(v);
+                }, 250);
+            });
+
         });
+
     </script>
 </head>
 <body>
@@ -108,9 +65,12 @@
                 <div class="grid_7">
                     <div id="map-canvas"></div>
                 </div>
-                <div class="grid_8">
-                    <div id="htree">
+                <div class="grid_8 htree">
 
+                    <div id="hsearch">
+                        <input type="text" name="search_field" id="search_field" value="" />
+                    </div>
+                    <div id="htree">
                     </div>
                 </div>
             </div>

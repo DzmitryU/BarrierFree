@@ -14,7 +14,6 @@ public class CategoryDAO extends BaseDAO {
     public List<Category> getCategoryTree() {
         Criteria criteria = getCriteria(Category.class);
         criteria.add(Restrictions.isNull(Category.COL_CATEGORY_ID));
-        List<Category> result = criteria.list();
-        return result;
+        return criteria.list();
     }
 }
