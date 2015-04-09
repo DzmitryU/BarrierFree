@@ -28,8 +28,7 @@ public class MapController extends AbstractController {
         List<Organization> organizations = organizationDAO.getEntitys(Organization.class);
         List<Category> categories = categoryDAO.getCategoryTree();
         Hibernate.initialize(organizations);
-        //Hibernate.initialize(categories);
-        categoryService.initialize(categories);
+        Hibernate.initialize(categories);
         model.addAttribute("organizations", organizations);
 
         try {
