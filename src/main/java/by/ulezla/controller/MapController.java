@@ -4,7 +4,6 @@ import by.ulezla.entity.Category;
 import by.ulezla.entity.Organization;
 import by.ulezla.service.CategoryService;
 import by.ulezla.utils.Json.JsonConfig;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,8 +31,9 @@ public class MapController extends AbstractController {
         model.addAttribute("organizations", organizations);
 
         try {
-            model.addAttribute("categories", JsonConfig.getObjectMapperInstance().writeValueAsString(categories));
-        } catch (JsonProcessingException e) {
+            model.addAttribute("categories",
+                    JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeList(categories)));
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "map";
