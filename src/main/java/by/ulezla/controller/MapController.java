@@ -32,7 +32,8 @@ public class MapController extends AbstractController {
 
         try {
             model.addAttribute("categories",
-                    JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeList(categories)));
+                    JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categories)));
+            System.out.println(JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categories)));
         } catch (Exception e) {
             e.printStackTrace();
         }

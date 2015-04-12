@@ -22,4 +22,8 @@ public class HTreeItem {
         children.add(hTreeItem);
     }
 
+    public void addChildren(List<HTreeItem> children) {
+        this.children.addAll(children);
+    }
+
 }
