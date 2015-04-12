@@ -15,6 +15,7 @@
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/map/google.maps.api.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/map/map.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/jstree.min.js"></script>
+    <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/tree.js"></script>
     <script>
 
 
@@ -30,25 +31,10 @@
 
             // HTree
             var data = ${categories};
-            $('#htree').jstree(
-                    {
-                        "core" :
-                        {
-                            "data" : ${categories}
-                        },
-                        "plugins" : [ "wholerow", "search" ]
-                    }
-            );
+            configureHTree("#htree", data);
 
-            // HSearch
-            var to = false;
-            $('#search_field').keyup(function () {
-                if(to) { clearTimeout(to); }
-                to = setTimeout(function () {
-                    var v = $('#search_field').val();
-                    $('#htree').jstree(true).search(v);
-                }, 250);
-            });
+            //Search
+            addSearching("#htree", "#search_field");
 
         });
 
