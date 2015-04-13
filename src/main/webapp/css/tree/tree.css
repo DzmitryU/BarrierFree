@@ -1,7 +1,16 @@
-ins.jstree-checkbox {
-    display:none;
+#hsearch {
+    width: 60%;
+    margin: 5px;
+    padding-left: 15px;
 }
 
-li[class~="jstree-leaf"] > a > ins.jstree-checkbox {
-   display: inline-block;
+.htree {
+    float: left;
+    margin-left: 10px;
+    padding: 5px;
+    min-width: 230px !important;
+    width: 15% !important;
 }
+
+.jstree li.jstree-open > a.jstree-anchor > i.jstree-checkbox,
+.jstree li.jstree-closed > a.jstree-anchor > i.jstree-checkbox { display:none; }

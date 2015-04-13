@@ -2,9 +2,12 @@ var options =
 {
     "core" :
     {
-        "data" : []
+        "data" : [],
+        "themes" : {
+            "icons":false
+        }
     },
-    "plugins" : [ "wholerow", "search" ]
+    "plugins" : [ "wholerow", "search", "checkbox" ]
 }
 
 //HTree
