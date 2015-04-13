@@ -4,26 +4,44 @@ var options =
     {
         "data" : [],
         "themes" : {
-            "icons":false
+            "icons" : false
         }
+    },
+    "checkbox" :
+    {
+        "three_state" : false,
+        "whole_node" : false
     },
     "plugins" : [ "wholerow", "search", "checkbox" ]
 }
 
 //HTree
-function configureHTree(tree, data) {
+function configureHTree(tree_id, data) {
     options.core.data = data;
-    $(tree).jstree(options);
+    $(tree_id).jstree(options);
+    bindCheckbox(tree_id);
 }
 
 // HSearch
-function addSearching(tree, searchField) {
+function addSearching(tree_id, search_field) {
     var to = false;
-    $(searchField).keyup(function () {
+    $(tree_id).keyup(function () {
         if(to) { clearTimeout(to); }
         to = setTimeout(function () {
-            var v = $(searchField).val();
-            $(tree).jstree(true).search(v);
+            var v = $(search_field).val();
+            $(tree_id).jstree(true).search(v);
         }, 250);
     });
+}
+
+//Checkbox
+function bindCheckbox(tree_id) {
+    $(tree_id).bind(
+        "select_node.jstree", function(evt, data){
+            if ($(tree_id).jstree().is_leaf(data.node)) {
+                console.log("SELECTION: " + data.node.text);
+            } else {
+            }
+        }
+    );
 }
