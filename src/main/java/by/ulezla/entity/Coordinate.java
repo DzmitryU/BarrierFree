@@ -1,5 +1,7 @@
 package by.ulezla.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
@@ -20,13 +22,16 @@ public class Coordinate implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+    @JsonProperty(value="lat")
 	private double x;
 
+    @JsonProperty(value="lng")
 	private double y;
 
 	//bi-directional many-to-one association to Organization
 	@OneToMany(mappedBy="coordinate")
     @Lazy
+    @JsonIgnore
 	private List<Organization> organizations;
 
 	public Coordinate() {

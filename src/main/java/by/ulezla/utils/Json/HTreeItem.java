@@ -1,5 +1,6 @@
-package by.ulezla.utils.view;
+package by.ulezla.utils.Json;
 
+import by.ulezla.entity.Coordinate;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -12,10 +13,13 @@ public class HTreeItem {
     private String type;
     @JsonProperty(value="children")
     private List<HTreeItem> children;
+    @JsonProperty(value="coordinate")
+    private Coordinate coordinate;
 
-    public HTreeItem(String text, String type) {
+    public HTreeItem(String text, String type, Coordinate coordinate) {
         this.text = text;
         this.type = type;
+        this.coordinate = coordinate;
         children = new ArrayList<>();
     }
 

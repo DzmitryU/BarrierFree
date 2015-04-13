@@ -2,7 +2,7 @@ package by.ulezla.service;
 
 import by.ulezla.entity.Category;
 import by.ulezla.entity.Organization;
-import by.ulezla.utils.view.HTreeItem;
+import by.ulezla.utils.Json.HTreeItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +19,11 @@ public class CategoryService extends AbstractService {
     }
 
     public HTreeItem buildHTreeObject(Organization organization) {
-        return new HTreeItem(organization.getName(), Organization.class.toString());
+        return new HTreeItem(organization.getName(), Organization.class.toString(), organization.getCoordinate());
     }
 
     public HTreeItem buildHTreeObject(Category category) {
-        HTreeItem hTreeItem = hTreeItem = new HTreeItem(category.getName(), Category.class.toString());
+        HTreeItem hTreeItem = hTreeItem = new HTreeItem(category.getName(), Category.class.toString(), null);
         hTreeItem.addChildren(buildHTreeListFromCategories(category.getCategories()));
         hTreeItem.addChildren(buildHTreeListFromOrganization(category.getOrganizations()));
 

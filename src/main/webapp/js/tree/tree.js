@@ -39,7 +39,8 @@ function bindCheckbox(tree_id) {
     $(tree_id).bind(
         "select_node.jstree", function(evt, data){
             if ($(tree_id).jstree().is_leaf(data.node)) {
-                console.log("SELECTION: " + data.node.text);
+                addOrganization(data.node.original.coordinate.lat, data.node.original.coordinate.lng, data.node.text);
+                showMarkers();
             } else {
             }
         }

@@ -15,6 +15,7 @@ function initialize() {
     map.setCenter(new google.maps.LatLng(53.683446, 23.83662));
     map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
+    clearMap();
     showMarkers();
 }
 
@@ -34,9 +35,11 @@ function showMarkers() {
         });
 
         bounds.extend(marker.getPosition());
+        if (map != null) {
+            map.fitBounds(bounds);
+            map.setCenter(bounds.getCenter());
+        }
     }
-    map.fitBounds(bounds);
-    map.setCenter(bounds.getCenter());
 }
 
 /**
@@ -55,4 +58,9 @@ function addOrganization(lat, lng, name) {
     });
 
     organizations.push({marker: marker});
+}
+
+function clearMap() {
+    organizations = [];
+    showMarkers();
 }

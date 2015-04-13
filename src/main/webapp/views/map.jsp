@@ -22,12 +22,7 @@
         google.maps.event.addDomListener(window, 'load', initialize);
         $(document).ready(function() {
             // Google map
-            <c:forEach var="organization" items="${organizations}">
-                var lat = <c:out value="${organization.coordinate.x}"/>;
-                var lng = <c:out value="${organization.coordinate.y}"/>;
-                var name =  "<c:out value="${organization.name}"/>";
-                addOrganization(lat, lng, name);
-            </c:forEach>
+           initialize();
 
             // HTree
             var data = ${categories};
