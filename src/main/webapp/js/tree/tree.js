@@ -9,8 +9,7 @@ var options =
     },
     "checkbox" :
     {
-        "three_state" : false,
-        "whole_node" : false
+        "whole_node" : true
     },
     "plugins" : [ "wholerow", "search", "checkbox" ]
 }
@@ -25,7 +24,7 @@ function configureHTree(tree_id, data) {
 // HSearch
 function addSearching(tree_id, search_field) {
     var to = false;
-    $(tree_id).keyup(function () {
+    $(search_field).keyup(function () {
         if(to) { clearTimeout(to); }
         to = setTimeout(function () {
             var v = $(search_field).val();
@@ -40,6 +39,15 @@ function bindCheckbox(tree_id) {
         "select_node.jstree", function(evt, data){
             if ($(tree_id).jstree().is_leaf(data.node)) {
                 addOrganization(data.node.original.coordinate.lat, data.node.original.coordinate.lng, data.node.text);
+                showMarkers();
+            } else {
+            }
+        }
+    );
+
+    $(tree_id).bind(
+        "deselect_node.jstree", function(evt, data){
+            if ($(tree_id).jstree().is_leaf(data.node)) {
                 showMarkers();
             } else {
             }
