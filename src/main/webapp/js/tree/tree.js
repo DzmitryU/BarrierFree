@@ -9,7 +9,9 @@ var options =
     },
     "checkbox" :
     {
-        "whole_node" : true
+        "whole_node" : false,
+        "three_state" : false,
+        "keep_selected_style" : false
     },
     "plugins" : [ "wholerow", "search", "checkbox" ]
 }
