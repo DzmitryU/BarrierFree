@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HTreeItem {
+    @JsonProperty(value = "nodeId")
+    int nodeId;
     @JsonProperty(value="text")
     private String text;
     @JsonProperty(value="type")
@@ -16,7 +18,8 @@ public class HTreeItem {
     @JsonProperty(value="coordinate")
     private Coordinate coordinate;
 
-    public HTreeItem(String text, String type, Coordinate coordinate) {
+    public HTreeItem(int nodeId, String text, String type, Coordinate coordinate) {
+        this.nodeId = nodeId;
         this.text = text;
         this.type = type;
         this.coordinate = coordinate;

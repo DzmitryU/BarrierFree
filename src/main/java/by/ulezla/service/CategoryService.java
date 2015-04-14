@@ -19,11 +19,11 @@ public class CategoryService extends AbstractService {
     }
 
     public HTreeItem buildHTreeObject(Organization organization) {
-        return new HTreeItem(organization.getName(), Organization.class.toString(), organization.getCoordinate());
+        return new HTreeItem(organization.getId(), organization.getName(), Organization.class.toString(), organization.getCoordinate());
     }
 
     public HTreeItem buildHTreeObject(Category category) {
-        HTreeItem hTreeItem = hTreeItem = new HTreeItem(category.getName(), Category.class.toString(), null);
+        HTreeItem hTreeItem = hTreeItem = new HTreeItem(category.getId(), category.getName(), Category.class.toString(), null);
         hTreeItem.addChildren(buildHTreeListFromCategories(category.getCategories()));
         hTreeItem.addChildren(buildHTreeListFromOrganization(category.getOrganizations()));
 

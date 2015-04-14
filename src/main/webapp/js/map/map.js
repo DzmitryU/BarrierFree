@@ -48,7 +48,7 @@ function showMarkers() {
  * @param lng
  * @param name
  */
-function addOrganization(lat, lng, name) {
+function addOrganization(id, name, lat, lng) {
     var latLng = new google.maps.LatLng(lat, lng);
     var marker = new google.maps.Marker({
         position: latLng,
@@ -57,7 +57,20 @@ function addOrganization(lat, lng, name) {
     marker.infoWindow = new google.maps.InfoWindow({
     });
 
-    organizations.push({marker: marker});
+    organizations.push(
+        {
+            id: id,
+            marker: marker
+        });
+}
+
+function removeOrganization(id) {
+    for (index = 0; index < organizations.length; ++index) {
+        if (organizations[index].id == id) {
+            organizations[index].marker.setMap(null);
+            organizations.splice(index, 1);
+        }
+    }
 }
 
 function clearMap() {

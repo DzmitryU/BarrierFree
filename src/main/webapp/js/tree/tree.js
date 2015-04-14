@@ -38,7 +38,8 @@ function bindCheckbox(tree_id) {
     $(tree_id).bind(
         "select_node.jstree", function(evt, data){
             if ($(tree_id).jstree().is_leaf(data.node)) {
-                addOrganization(data.node.original.coordinate.lat, data.node.original.coordinate.lng, data.node.text);
+                addOrganization(data.node.original.nodeId, data.node.text,
+                    data.node.original.coordinate.lat, data.node.original.coordinate.lng);
                 showMarkers();
             } else {
             }
@@ -48,6 +49,7 @@ function bindCheckbox(tree_id) {
     $(tree_id).bind(
         "deselect_node.jstree", function(evt, data){
             if ($(tree_id).jstree().is_leaf(data.node)) {
+                removeOrganization(data.node.original.nodeId)
                 showMarkers();
             } else {
             }
