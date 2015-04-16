@@ -1,5 +1,6 @@
 package by.ulezla.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.context.annotation.Lazy;
 
 import java.io.Serializable;
@@ -39,6 +40,7 @@ public class Element implements Serializable {
 			}
 		)
     @Lazy
+    @JsonIgnore
 	private List<Organization> organizations;
 
 	public Element() {

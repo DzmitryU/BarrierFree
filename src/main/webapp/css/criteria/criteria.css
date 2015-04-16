@@ -1,0 +1,25 @@
+.criteria {
+    width: 20% !important;
+    margin-left: 10px;
+    padding: 5px;
+    min-width: 250px;
+}
+
+.criteria-checkbox {
+    width: 10px !important;
+    float: right !important;
+    margin: 5px;
+}
+
+.criteria-item {
+    margin: 5px;
+}
+
+#page-menu {
+    display: inline-block;
+}
+
+#criteria-category {
+    margin: 10px !important;
+    padding-left: 15px;
+}

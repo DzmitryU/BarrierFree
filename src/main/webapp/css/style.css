@@ -117,6 +117,7 @@ header{
 	background: url('../images/header-bg.gif') left top repeat;
 	border-bottom: 3px solid #1c1e21;
 	padding-top: 25px;
+    min-width: 1700px;
 }
 	.logo {
 		display: block;
@@ -146,7 +147,7 @@ header{
 						}
 /*===== content =====*/
 #content {
-
+    min-width: 1700px;
 }
 	#slider {
 		height: 367px;
