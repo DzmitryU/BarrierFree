@@ -1,6 +1,7 @@
 package by.ulezla.controller;
 
 import by.ulezla.entity.Category;
+import by.ulezla.entity.Element;
 import by.ulezla.entity.Organization;
 import by.ulezla.service.CategoryService;
 import by.ulezla.utils.Json.JsonConfig;
@@ -25,13 +26,16 @@ public class MapController extends AbstractController {
         setRequirements(model, principal);
 
         List<Organization> organizations = organizationDAO.getEntitys(Organization.class);
-        List<Category> categories = categoryDAO.getCategoryTree();
+        List<Category> categories = categoryDAO.getCategories();
+        List<Element> elements = elementDAO.getElements();
         Hibernate.initialize(organizations);
         Hibernate.initialize(categories);
         model.addAttribute("organizations", organizations);
+        model.addAttribute("elements", elements);
+        model.addAttribute("categories", categories);
 
         try {
-            model.addAttribute("categories",
+            model.addAttribute("category_tree",
                     JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categories)));
         } catch (Exception e) {
             e.printStackTrace();

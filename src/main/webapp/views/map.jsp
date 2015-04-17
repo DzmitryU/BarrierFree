@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/tree/style.min.css" type="text/css" />
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/tree/tree.css" type="text/css" />
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/criteria/criteria.css" type="text/css" />
+    <link rel="stylesheet" href="/<c:out value="${appName}" />/css/organization/organization-list.css" type="text/css" />
           media="screen">
 
-    <script type="text/javascript" src="/<c:out value="${appName}" />/js/map/google.maps.api.js"></script>
+    <script type="text/javascript"
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC332jqOlGw0-FnUh18dekVtwps8nEJRR0&language=ru-RU">
+    </script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/map/map.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/jstree.min.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/tree.js"></script>
@@ -26,11 +29,20 @@
            initialize();
 
             // HTree
-            var data = ${categories};
+            var data = ${category_tree};
             configureHTree("#htree", data);
 
             //Search
             addSearching("#htree", "#search_field");
+
+            //Criteria
+            <c:forEach var="categories" items="${categories}">
+                var sel = document.getElementById('criteria-category');
+                var opt = document.createElement('option');
+                opt.value = ${categories.id};
+                opt.innerHTML = "${categories.name}";
+                sel.appendChild(opt);
+            </c:forEach>
 
         });
 
@@ -46,39 +58,27 @@
             <div class="wrapper h-pad">
                 <div class="grid_7">
                     <div id="map-canvas"></div>
+                    <div class="organization_list">
+                        <c:forEach var="organization" items="${organizations}">
+                            <div class="organization-item">
+                                <label>${organization.name}</label>
+                                <label>${organization.description}</label>
+                                <input class="show-organization-checkbox" id="checkbox_${organization.id}" type="checkbox" name="checkbox_${organization.id}">
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
                 <div id="page-menu">
                     <div class="grid_8 criteria">
-                        <select id="criteria-category">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                        <select id="criteria-category" >
+                            <option value="0">= Любая =</option>
                         </select>
-                        <div class="criteria-item">
-                            <input id="checkbox_1" type="checkbox" class="criteria-checkbox" name="checkbox_1">
-                            <label for="checkbox_1">1</label>
-                        </div>
-                        <div class="criteria-item">
-                            <input id="checkbox_2" type="checkbox" class="criteria-checkbox" name="checkbox_2">
-                            <label for="checkbox_2">2</label>
-                        </div>
-                        <div class="criteria-item">
-                            <input id="checkbox_3" type="checkbox" class="criteria-checkbox" name="checkbox_3">
-                            <label for="checkbox_3">3</label>
-                        </div>
-                        <div class="criteria-item">
-                            <input id="checkbox_4" type="checkbox" class="criteria-checkbox" name="checkbox_4">
-                            <label for="checkbox_4">4</label>
-                        </div>
-                        <div class="criteria-item">
-                            <input id="checkbox_5" type="checkbox" class="criteria-checkbox" name="checkbox_5">
-                            <label for="checkbox_5">5</label>
-                        </div>
-                        <div class="criteria-item">
-                            <input id="checkbox_6" type="checkbox" class="criteria-checkbox" name="checkbox_6">
-                            <label for="checkbox_6">6</label>
-                        </div>
+                        <c:forEach var="element" items="${elements}">
+                            <div class="criteria-item">
+                                <input id="checkbox_${element.id}" type="checkbox" class="criteria-checkbox" name="checkbox_${element.id}">
+                                <label for="checkbox_${element.id}">${element.name}</label>
+                            </div>
+                        </c:forEach>
                         <button type="button">Поиск</button>
                     </div>
                     <div class="grid_8 htree">
