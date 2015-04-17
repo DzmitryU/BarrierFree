@@ -20,8 +20,11 @@
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/map/map.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/jstree.min.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/tree.js"></script>
+    <script type="text/javascript" src="/<c:out value="${appName}" />/js/organization/organization-list.js"></script>
     <script>
 
+        //List of organizations
+        var organization_list = {};
 
         google.maps.event.addDomListener(window, 'load', initialize);
         $(document).ready(function() {
@@ -44,6 +47,19 @@
                 sel.appendChild(opt);
             </c:forEach>
 
+            //Organizations
+            <c:forEach var="organization" items="${organizations}">
+                organization_list[${organization.id}] =
+                {
+                    id : ${organization.id},
+                    name : "${organization.name}",
+                    category : "${organization.category.name}",
+                    lat : ${organization.coordinate.x},
+                    lng : ${organization.coordinate.y},
+                    displayed: false
+                };
+            </c:forEach>
+
         });
 
     </script>
@@ -59,13 +75,21 @@
                 <div class="grid_7">
                     <div id="map-canvas"></div>
                     <div class="organization_list">
-                        <c:forEach var="organization" items="${organizations}">
-                            <div class="organization-item">
-                                <label>${organization.name}</label>
-                                <label>${organization.description}</label>
-                                <input class="show-organization-checkbox" id="checkbox_${organization.id}" type="checkbox" name="checkbox_${organization.id}">
-                            </div>
-                        </c:forEach>
+                        <table>
+                            <c:forEach var="organization" items="${organizations}">
+                                <tr class="organization-item">
+                                    <td class="organization-title">${organization.name}</td>
+                                    <td> ${organization.category.name}</td>
+                                    <td class="organization-description"> ${organization.description}</td>
+                                    <td class="organization-button">
+                                        <button id="show-button-${organization.id}"
+                                                type="button"
+                                                onclick="toggleSelectedOrganizationOnMap(organization_list[${organization.id}])">
+                                            Показать</button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
                 </div>
                 <div id="page-menu">
