@@ -25,7 +25,7 @@ function initialize() {
 function showMarkers() {
     var bounds = new google.maps.LatLngBounds();
 
-    for (index = 0; index < organizations.length; ++index) {
+    for (index in organizations) {
         var marker = organizations[index].marker;
 
         marker.setMap(map);
@@ -57,15 +57,26 @@ function addOrganization(id, name, lat, lng) {
     marker.infoWindow = new google.maps.InfoWindow({
     });
 
-    organizations.push(
-        {
-            id: id,
-            marker: marker
-        });
+    var newOrganization = true;
+    for (index in organizations) {
+        if (organizations[index].id === id) {
+            organizations[index].visible = true;
+            organizations[index].marker = marker;
+            newOrganization = false;
+        }
+    }
+
+    if (newOrganization) {
+        organizations.push(
+            {
+                id: id,
+                marker: marker
+            });
+    }
 }
 
 function removeOrganization(id) {
-    for (index = 0; index < organizations.length; ++index) {
+    for (index in organizations) {
         if (organizations[index].id == id) {
             organizations[index].marker.setMap(null);
             organizations.splice(index, 1);
