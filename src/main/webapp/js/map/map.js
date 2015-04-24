@@ -20,24 +20,26 @@ function initialize() {
 }
 
 /**
- * Displayes all markers on map.
+ * Displays all markers on map.
  */
 function showMarkers() {
     var bounds = new google.maps.LatLngBounds();
 
-    for (index in organizations) {
-        var marker = organizations[index].marker;
+    for (var index in organizations) {
+        if (organizations[index].visible) {
+            var marker = organizations[index].marker;
 
-        marker.setMap(map);
-        google.maps.event.addListener(marker, 'click', function() {
-            marker.infoWindow.setContent(this.title);
-            marker.infoWindow.open(map, this);
-        });
+            marker.setMap(map);
+            google.maps.event.addListener(marker, 'click', function () {
+                marker.infoWindow.setContent(this.title);
+                marker.infoWindow.open(map, this);
+            });
 
-        bounds.extend(marker.getPosition());
-        if (map != null) {
-            map.fitBounds(bounds);
-            map.setCenter(bounds.getCenter());
+            bounds.extend(marker.getPosition());
+            if (map != null) {
+                map.fitBounds(bounds);
+                map.setCenter(bounds.getCenter());
+            }
         }
     }
 }
@@ -58,7 +60,7 @@ function addOrganization(id, name, lat, lng) {
     });
 
     var newOrganization = true;
-    for (index in organizations) {
+    for (var index in organizations) {
         if (organizations[index].id === id) {
             organizations[index].visible = true;
             organizations[index].marker = marker;
@@ -70,13 +72,14 @@ function addOrganization(id, name, lat, lng) {
         organizations.push(
             {
                 id: id,
-                marker: marker
+                marker: marker,
+                visible: true
             });
     }
 }
 
 function removeOrganization(id) {
-    for (index in organizations) {
+    for (var index in organizations) {
         if (organizations[index].id == id) {
             organizations[index].marker.setMap(null);
             organizations.splice(index, 1);
@@ -84,7 +87,17 @@ function removeOrganization(id) {
     }
 }
 
+function hideMarker(id) {
+    for (var index in organizations) {
+        if (organizations[index] == id) {
+            organizations[index].visible = false;
+        }
+    }
+}
+
 function clearMap() {
-    organizations = [];
+    for (var index in organizations) {
+        organizations[index].visible = false;
+    }
     showMarkers();
 }
