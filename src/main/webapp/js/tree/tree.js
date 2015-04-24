@@ -51,7 +51,7 @@ function bindCheckbox(tree_id) {
     $(tree_id).bind(
         "deselect_node.jstree", function(evt, data){
             if ($(tree_id).jstree().is_leaf(data.node)) {
-                removeOrganization(data.node.original.nodeId)
+                hideOrganization(data.node.original.nodeId)
                 showMarkers();
             } else {
             }

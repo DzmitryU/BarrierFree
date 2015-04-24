@@ -87,9 +87,10 @@ function removeOrganization(id) {
     }
 }
 
-function hideMarker(id) {
+function hideOrganization(id) {
     for (var index in organizations) {
-        if (organizations[index] == id) {
+        if (organizations[index].id == id) {
+            organizations[index].marker.setMap(null);
             organizations[index].visible = false;
         }
     }

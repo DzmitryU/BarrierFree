@@ -1,6 +1,6 @@
 function toggleSelectedOrganizationOnMap(organization) {
     if (organization.displayed) {
-        removeOrganization(organization.id);
+        hideOrganization(organization.id);
         organization.displayed = false;
         $("#show-button-" + organization.id).html('Показать');
     } else {
