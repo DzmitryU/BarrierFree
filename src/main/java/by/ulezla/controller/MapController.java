@@ -27,6 +27,7 @@ public class MapController extends AbstractController {
 
         List<Organization> organizations = organizationDAO.getEntitys(Organization.class);
         List<Category> categories = categoryDAO.getCategories();
+        List<Category> categor_tree = categoryDAO.getCategoryTree();
         List<Element> elements = elementDAO.getElements();
         Hibernate.initialize(organizations);
         Hibernate.initialize(categories);
@@ -36,7 +37,7 @@ public class MapController extends AbstractController {
 
         try {
             model.addAttribute("category_tree",
-                    JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categories)));
+                    JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categor_tree)));
         } catch (Exception e) {
             e.printStackTrace();
         }

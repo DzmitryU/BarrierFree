@@ -12,3 +12,7 @@
 #map-page {
     white-space: nowrap;
 }
+
+.map-page {
+    width: 55%;
+}

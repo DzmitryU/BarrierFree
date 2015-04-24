@@ -72,7 +72,7 @@
     <div class="inner pad1">
         <div class="container_12">
             <div class="wrapper h-pad">
-                <div class="grid_7">
+                <div class="grid_7 map-page">
                     <div id="map-canvas"></div>
                     <div class="organization_list">
                         <table>
