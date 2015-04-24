@@ -1,5 +1,5 @@
 var map;
-var organizations = [];
+var organizations = {};
 var mapOptions = {
     zoom: 15,
     maxZoom:18,
@@ -59,40 +59,23 @@ function addOrganization(id, name, lat, lng) {
     marker.infoWindow = new google.maps.InfoWindow({
     });
 
-    var newOrganization = true;
-    for (var index in organizations) {
-        if (organizations[index].id === id) {
-            organizations[index].visible = true;
-            organizations[index].marker = marker;
-            newOrganization = false;
-        }
-    }
-
-    if (newOrganization) {
-        organizations.push(
-            {
-                id: id,
-                marker: marker,
-                visible: true
-            });
-    }
-}
-
-function removeOrganization(id) {
-    for (var index in organizations) {
-        if (organizations[index].id == id) {
-            organizations[index].marker.setMap(null);
-            organizations.splice(index, 1);
+    if (typeof organizations[id] !== 'undefined') {
+        organizations[id].visible = true;
+        organizations[id].marker = marker;
+    } else {
+        organizations[id] =
+        {
+            id: id,
+            marker: marker,
+            visible: true
         }
     }
 }
 
 function hideOrganization(id) {
-    for (var index in organizations) {
-        if (organizations[index].id == id) {
-            organizations[index].marker.setMap(null);
-            organizations[index].visible = false;
-        }
+    if (typeof organizations[id] !== 'undefined') {
+        organizations[id].marker.setMap(null);
+        organizations[id].visible = false;
     }
 }
 
