@@ -81,7 +81,7 @@ function hideOrganization(id) {
 
 function clearMap() {
     for (var index in organizations) {
-        organizations[index].visible = false;
+        hideOrganization(organizations[index].id)
     }
     showMarkers();
 }

@@ -4,13 +4,14 @@ var options =
     {
         "data" : [],
         "themes" : {
-            "icons" : false
+            "icons" : false,
+            "dblclick_toggle" : false
         }
     },
     "checkbox" :
     {
         "whole_node" : false,
-        "three_state" : false,
+        //"three_state" : false,
         "keep_selected_style" : false
     },
     "plugins" : [ "wholerow", "search", "checkbox" ]
@@ -39,22 +40,29 @@ function addSearching(tree_id, search_field) {
 function bindCheckbox(tree_id) {
     $(tree_id).bind(
         "select_node.jstree", function(evt, data){
-            if ($(tree_id).jstree().is_leaf(data.node)) {
-                addOrganization(data.node.original.nodeId, data.node.text,
-                    data.node.original.coordinate.lat, data.node.original.coordinate.lng);
-                showMarkers();
-            } else {
+            clearMap();
+            var bottom_checked = $(tree_id).jstree().get_bottom_checked();
+            for (index in bottom_checked) {
+                var id = bottom_checked[index];
+                var node = $(tree_id).jstree().get_node(id);
+                addOrganization(node.original.nodeId, node.text,
+                    node.original.coordinate.lat, node.original.coordinate.lng);
             }
+            showMarkers();
         }
     );
 
     $(tree_id).bind(
         "deselect_node.jstree", function(evt, data){
-            if ($(tree_id).jstree().is_leaf(data.node)) {
-                hideOrganization(data.node.original.nodeId)
-                showMarkers();
-            } else {
+            clearMap();
+            var bottom_checked = $(tree_id).jstree().get_bottom_checked();
+            for (index in bottom_checked) {
+                var id = bottom_checked[index];
+                var node = $(tree_id).jstree().get_node(id);
+                addOrganization(node.original.nodeId, node.text,
+                    node.original.coordinate.lat, node.original.coordinate.lng);
             }
+            showMarkers();
         }
     );
 }
