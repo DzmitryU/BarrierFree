@@ -45,8 +45,11 @@ function bindCheckbox(tree_id) {
             for (index in bottom_checked) {
                 var id = bottom_checked[index];
                 var node = $(tree_id).jstree().get_node(id);
-                addOrganization(node.original.nodeId, node.text,
-                    node.original.coordinate.lat, node.original.coordinate.lng);
+
+                if (node.original.type === "class by.ulezla.entity.Organization") {
+                    addOrganization(node.original.nodeId, node.text,
+                        node.original.coordinate.lat, node.original.coordinate.lng);
+                }
             }
             showMarkers();
         }
@@ -59,8 +62,10 @@ function bindCheckbox(tree_id) {
             for (index in bottom_checked) {
                 var id = bottom_checked[index];
                 var node = $(tree_id).jstree().get_node(id);
-                addOrganization(node.original.nodeId, node.text,
-                    node.original.coordinate.lat, node.original.coordinate.lng);
+                if (node.original.type === "class by.ulezla.entity.Organization") {
+                    addOrganization(node.original.nodeId, node.text,
+                        node.original.coordinate.lat, node.original.coordinate.lng);
+                }
             }
             showMarkers();
         }
