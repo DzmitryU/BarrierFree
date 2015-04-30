@@ -28,20 +28,20 @@ public class MapController extends AbstractController {
                           @RequestParam(value = "criteria", required = false) List<String> criteriasId) {
         setRequirements(model, principal);
 
-        List<Organization> organizations = organizationDAO.getEntitys(Organization.class);
+        List<Organization> organizations = organizationDAO.filterOrganizations(categoryDAO.getCategory(categoryId), criteriasId);
         List<Category> categories = categoryDAO.getCategories();
-        List<Category> categor_tree = categoryDAO.getCategoryTree();
+        List<Category> categoryTree = categoryDAO.getCategoryTree();
         List<Element> elements = elementDAO.getElements();
         Hibernate.initialize(organizations);
         Hibernate.initialize(categories);
 
+        model.addAttribute("organizations", organizations);
         model.addAttribute("elements", elements);
         model.addAttribute("categories", categories);
 
-        model.addAttribute("organizations", organizations);
         try {
             model.addAttribute("category_tree",
-                    JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categor_tree)));
+                    JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categoryTree)));
         } catch (Exception e) {
             e.printStackTrace();
         }

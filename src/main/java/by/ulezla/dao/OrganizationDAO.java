@@ -18,7 +18,7 @@ public class OrganizationDAO extends BaseDAO {
         return criteria.list();
     }
 
-    public List<Integer> filterOrganizations(Category category, List<String> elements) {
+    public List<Organization> filterOrganizations(Category category, List<String> elements) {
         Criteria criteria = getCriteria(Organization.class);
         if (category != null) {
             criteria.add(Restrictions.eq(Organization.COL_CATEGORY_ID, category));
