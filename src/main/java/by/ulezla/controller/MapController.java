@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.List;
@@ -22,7 +23,9 @@ public class MapController extends AbstractController {
 
     @Transactional
     @RequestMapping(value = "/map", method = RequestMethod.GET)
-    public String showMap(Model model, Principal principal) {
+    public String showMap(Model model, Principal principal,
+                          @RequestParam(value = "category", required = false) String categoryId,
+                          @RequestParam(value = "criteria", required = false) List<String> criteriasId) {
         setRequirements(model, principal);
 
         List<Organization> organizations = organizationDAO.getEntitys(Organization.class);
@@ -31,10 +34,11 @@ public class MapController extends AbstractController {
         List<Element> elements = elementDAO.getElements();
         Hibernate.initialize(organizations);
         Hibernate.initialize(categories);
-        model.addAttribute("organizations", organizations);
+
         model.addAttribute("elements", elements);
         model.addAttribute("categories", categories);
 
+        model.addAttribute("organizations", organizations);
         try {
             model.addAttribute("category_tree",
                     JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categor_tree)));

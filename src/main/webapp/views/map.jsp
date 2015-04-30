@@ -21,6 +21,7 @@
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/jstree.min.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/tree/tree.js"></script>
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/organization/organization-list.js"></script>
+    <script type="text/javascript" src="/<c:out value="${appName}" />/js/criteria/criteria.js"></script>
     <script>
 
         //List of organizations
@@ -47,6 +48,10 @@
                 sel.appendChild(opt);
             </c:forEach>
 
+            $("#criteria-search").click(function(){
+                filterOrganizations($( "#criteria-category option:selected").val());
+            });
+
             //Organizations
             <c:forEach var="organization" items="${organizations}">
                 organization_list[${organization.id}] =
@@ -59,6 +64,7 @@
                     displayed: false
                 };
             </c:forEach>
+
 
         });
 
@@ -77,7 +83,7 @@
                     <div class="organization_list">
                         <table>
                             <c:forEach var="organization" items="${organizations}">
-                                <tr class="organization-item">
+                                <tr id="organization-item-${organization.id}" class="organization-item">
                                     <td class="organization-title">${organization.name}</td>
                                     <td> ${organization.category.name}</td>
                                     <td class="organization-description"> ${organization.description}</td>
@@ -99,11 +105,11 @@
                         </select>
                         <c:forEach var="element" items="${elements}">
                             <div class="criteria-item">
-                                <input id="checkbox_${element.id}" type="checkbox" class="criteria-checkbox" name="checkbox_${element.id}">
+                                <input id="checkbox_${element.id}" type="checkbox" class="criteria-checkbox" value="${element.id}">
                                 <label for="checkbox_${element.id}">${element.name}</label>
                             </div>
                         </c:forEach>
-                        <button type="button">Поиск</button>
+                        <button id="criteria-search" type="button">Поиск</button>
                     </div>
                     <div class="grid_8 htree">
 
