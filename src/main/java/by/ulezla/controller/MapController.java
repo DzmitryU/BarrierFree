@@ -28,7 +28,12 @@ public class MapController extends AbstractController {
                           @RequestParam(value = "criteria", required = false) List<String> criteriasId) {
         setRequirements(model, principal);
 
-        List<Organization> organizations = organizationDAO.filterOrganizations(categoryDAO.getCategory(categoryId), criteriasId);
+        List<Organization> organizations;
+        if (categoryId != null) {
+           organizations = organizationDAO.filterOrganizations(categoryDAO.getCategory(categoryId), criteriasId);
+        } else {
+            organizations = organizationDAO.getEntitys(Organization.class);
+        }
         List<Category> categories = categoryDAO.getCategories();
         List<Category> categoryTree = categoryDAO.getCategoryTree();
         List<Element> elements = elementDAO.getElements();
