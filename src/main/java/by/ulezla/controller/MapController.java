@@ -22,15 +22,16 @@ public class MapController extends AbstractController {
     CategoryService categoryService = new CategoryService();
 
     @Transactional
-    @RequestMapping(value = "/map", method = RequestMethod.GET)
+    @RequestMapping(value = {"/map", "/"}, method = RequestMethod.GET)
     public String showMap(Model model, Principal principal,
                           @RequestParam(value = "category", required = false) String categoryId,
-                          @RequestParam(value = "criteria", required = false) List<String> criteriasId) {
+                          @RequestParam(value = "criteria", required = false) List<String> elementId) {
         setRequirements(model, principal);
 
         List<Organization> organizations;
         if (categoryId != null) {
-           organizations = organizationDAO.filterOrganizations(categoryDAO.getCategory(categoryId), criteriasId);
+           organizations = organizationDAO.filterOrganizations(categoryDAO.getCategory(categoryId),
+                                                               elementDAO.getElements(elementId));
         } else {
             organizations = organizationDAO.getEntitys(Organization.class);
         }
@@ -46,7 +47,8 @@ public class MapController extends AbstractController {
 
         try {
             model.addAttribute("category_tree",
-                    JsonConfig.getObjectMapperInstance().writeValueAsString(categoryService.buildHTreeListFromCategories(categoryTree)));
+                    JsonConfig.getObjectMapperInstance().writeValueAsString(
+                            categoryService.buildHTreeListFromCategories(categoryTree)));
         } catch (Exception e) {
             e.printStackTrace();
         }

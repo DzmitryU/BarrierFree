@@ -16,6 +16,7 @@ import java.util.List;
 @NamedQuery(name="Element.findAll", query="SELECT e FROM Element e")
 public class Element implements Serializable {
 	private static final long serialVersionUID = 1L;
+    public static final String COL_ID = "id";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -50,8 +51,9 @@ public class Element implements Serializable {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public Element setId(int id) {
 		this.id = id;
+        return this;
 	}
 
 	public String getDescription() {
