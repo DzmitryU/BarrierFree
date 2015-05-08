@@ -22,9 +22,13 @@ public class CategoryDAO extends BaseDAO {
         return criteria.list();
     }
 
-    public Category getCategory(String id) {
+    public Category getCategory(Integer id) {
         Criteria criteria = getCriteria(Category.class);
         criteria.add(Restrictions.eq(Category.COL_ID, id));
-        return  (Category)criteria.list().get(0);
+        Category category = null;
+        if (criteria.list().size() > 0 ) {
+            category = (Category)criteria.list().get(0);
+        }
+        return category;
     }
 }

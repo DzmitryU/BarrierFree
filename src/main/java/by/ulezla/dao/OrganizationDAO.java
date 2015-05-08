@@ -30,10 +30,12 @@ public class OrganizationDAO extends BaseDAO {
         List<Organization> preselectedOrganizations = criteria.list();
         List<Organization> resultOrganizations = new ArrayList<>();
         for (Organization organization : preselectedOrganizations) {
-            List<Element> elementsResult = elements;
-            elementsResult.retainAll(organization.getElements());
-            if (elementsResult.size() > 0) {
-                resultOrganizations.add(organization);
+            if (elements.size() > 0) {
+                List<Element> elementsResult = elements;
+                elementsResult.retainAll(organization.getElements());
+                if (elementsResult.size() > 0) {
+                    resultOrganizations.add(organization);
+                }
             }
         }
 

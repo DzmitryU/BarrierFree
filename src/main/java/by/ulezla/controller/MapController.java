@@ -24,8 +24,8 @@ public class MapController extends AbstractController {
     @Transactional
     @RequestMapping(value = {"/map", "/"}, method = RequestMethod.GET)
     public String showMap(Model model, Principal principal,
-                          @RequestParam(value = "category", required = false) String categoryId,
-                          @RequestParam(value = "criteria", required = false) List<String> elementId) {
+                          @RequestParam(value = "category", required = false) Integer categoryId,
+                          @RequestParam(value = "elements", required = false) List<Integer> elementId) {
         setRequirements(model, principal);
 
         List<Organization> organizations;

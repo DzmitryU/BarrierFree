@@ -6,6 +6,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,10 +17,16 @@ public class ElementDAO extends BaseDAO {
         return criteria.list();
     }
 
-    public List<Element> getElements(List<String> ids) {
+    public List<Element> getElements(List<Integer> ids) {
         Criteria criteria = getCriteria(Element.class);
-        criteria.add(Restrictions.in(Element.COL_ID, ids));
+        List<Element> elements = new ArrayList<>();
+        if (ids != null) {
+            criteria.add(Restrictions.in(Element.COL_ID, ids));
+            elements = criteria.list();
+        } else {
 
-        return criteria.list();
+        }
+
+        return elements;
     }
 }
