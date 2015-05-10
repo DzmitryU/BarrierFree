@@ -11,7 +11,6 @@ function filterOrganizations(category) {
             elements: checkedValues
         },
         success : function(response) {
-            alert(response);
         },
         error : function(e) {
             alert('Error: ' + e);

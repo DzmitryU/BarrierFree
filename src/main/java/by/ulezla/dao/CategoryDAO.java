@@ -26,8 +26,9 @@ public class CategoryDAO extends BaseDAO {
         Criteria criteria = getCriteria(Category.class);
         criteria.add(Restrictions.eq(Category.COL_ID, id));
         Category category = null;
-        if (criteria.list().size() > 0 ) {
-            category = (Category)criteria.list().get(0);
+        List<Category> categories = criteria.list();
+        if (categories.size() > 0 ) {
+            category = categories.get(0);
         }
         return category;
     }
