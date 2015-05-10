@@ -34,7 +34,7 @@ public class MapController extends AbstractController {
         List<Organization> organizations;
         if (categoryId != null) {
            organizations = organizationDAO.filterOrganizations(categoryDAO.getCategory(categoryId),
-                                                               elementDAO.getElements(new ArrayList<Integer>(elementId)));
+                                                               elementDAO.getElements(elementId));
         } else {
             organizations = organizationDAO.getEntitys(Organization.class);
         }
