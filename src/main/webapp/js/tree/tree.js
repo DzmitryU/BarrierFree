@@ -38,6 +38,7 @@ function addSearching(tree_id, search_field) {
 
 function updateMapFromTree(tree_id) {
     clearMap();
+    refreshOrganizationList();
     var bottom_checked = $(tree_id).jstree().get_bottom_checked();
     for (var index in bottom_checked) {
         var id = bottom_checked[index];
@@ -46,6 +47,7 @@ function updateMapFromTree(tree_id) {
         if (node.original.type === "class by.ulezla.entity.Organization") {
             addOrganization(node.original.nodeId, node.text,
                 node.original.coordinate.lat, node.original.coordinate.lng);
+            markOrganizationDisplayed(getOrganization(node.original.nodeId));
         }
     }
     showMarkers();
