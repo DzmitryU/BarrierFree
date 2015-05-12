@@ -11,6 +11,7 @@ function filterOrganizations(category) {
         },
         success : function(response) {
             clearOrganizationList();
+            clearTree("#htree");
             for (var index in response) {
                 showOrganizationInList(getOrganization(response[index].id));
             }
