@@ -1,5 +1,6 @@
 package by.ulezla.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
@@ -28,11 +29,13 @@ public class Comment implements Serializable {
 
 	//bi-directional many-to-one association to Organization
 	@ManyToOne(fetch=FetchType.LAZY)
+    @JsonIgnore
 	private Organization organization;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch=FetchType.LAZY)
     @Lazy
+    @JsonIgnore
 	private User user;
 
 	public Comment() {

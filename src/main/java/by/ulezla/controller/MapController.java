@@ -12,11 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -26,18 +24,13 @@ public class MapController extends AbstractController {
 
     @Transactional
     @RequestMapping(value = {"/map", "/"}, method = RequestMethod.GET)
-    public String showMap(Model model, Principal principal,
-                          @RequestParam(value = "category", required = false) Integer categoryId,
-                          @RequestParam(value = "elements[]", required = false) List<Integer> elementId) {
+    public String showMap(Model model, Principal principal) {
         setRequirements(model, principal);
 
         List<Organization> organizations;
-        if (categoryId != null) {
-           organizations = organizationDAO.filterOrganizations(categoryDAO.getCategory(categoryId),
-                                                               elementDAO.getElements(elementId));
-        } else {
-            organizations = organizationDAO.getEntitys(Organization.class);
-        }
+
+        organizations = organizationDAO.getEntitys(Organization.class);
+
         List<Category> categories = categoryDAO.getCategories();
         List<Category> categoryTree = categoryDAO.getCategoryTree();
         List<Element> elements = elementDAO.getElements();
@@ -56,5 +49,17 @@ public class MapController extends AbstractController {
             e.printStackTrace();
         }
         return "map";
+    }
+
+    @Transactional
+    @RequestMapping(value = {"/filter"}, method = RequestMethod.GET)
+    public @ResponseBody
+    List<Organization> filterOrganizations(@RequestParam(value = "category", required = false) Integer categoryId,
+                                           @RequestParam(value = "elements[]", required = false) List<Integer> elementId) {
+
+        List<Organization> organizations = organizationDAO.filterOrganizations(categoryDAO.getCategory(categoryId),
+                    elementDAO.getElements(elementId));
+        Hibernate.initialize(organizations);
+        return organizations;
     }
 }

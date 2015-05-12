@@ -1,5 +1,6 @@
 package by.ulezla.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
@@ -31,15 +32,18 @@ public class Organization implements Serializable {
 	//bi-directional many-to-one association to Comment
 	@OneToMany(mappedBy="organization")
     @Lazy
+    @JsonIgnore
 	private List<Comment> comments;
 
 	//bi-directional many-to-many association to Element
 	@ManyToMany(mappedBy="organizations")
     @Lazy
+    @JsonIgnore
 	private List<Element> elements;
 
 	//bi-directional many-to-one association to Category
 	@ManyToOne(fetch=FetchType.LAZY)
+    @JsonIgnore
 	private Category category;
 
 	//bi-directional many-to-one association to Coordinate
@@ -48,6 +52,7 @@ public class Organization implements Serializable {
 
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch=FetchType.LAZY)
+    @JsonIgnore
 	private User user;
 
 	public Organization() {

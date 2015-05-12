@@ -24,9 +24,6 @@
     <script type="text/javascript" src="/<c:out value="${appName}" />/js/criteria/criteria.js"></script>
     <script>
 
-        //List of organizations
-        var organization_list = {};
-
         google.maps.event.addDomListener(window, 'load', initialize);
         $(document).ready(function() {
             // Google map
