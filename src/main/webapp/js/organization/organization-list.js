@@ -2,10 +2,14 @@
 var organization_list = {};
 
 function toggleSelectedOrganizationOnMap(organization) {
+    var tmp = $("#htree").jstree().get_node("o" + organization.id)
     if (organization != null && organization.displayed) {
-        hideOrganizationFromList(organization);
+        $("#htree").jstree().uncheck_node(tmp);
+        //hideOrganizationFromList(organization);
     } else {
-        showOrganizationFromList(organization);
+
+        $("#htree").jstree().check_node(tmp);
+        //showOrganizationFromList(organization);
     }
     showMarkers();
 }
@@ -66,12 +70,14 @@ function getOrganization(id) {
 
 function markOrganizationDisplayed(organization) {
     if (organization != null) {
+        organization.displayed = true;
         $("#show-button-" + organization.id).html('Скрыть');
     }
 }
 
-function markOrganizationHied(organization) {
+function markOrganizationHidden(organization) {
     if (organization != null) {
+        organization.displayed = false;
         $("#show-button-" + organization.id).html('Показать');
     }
 }
