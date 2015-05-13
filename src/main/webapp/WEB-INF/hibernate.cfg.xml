@@ -5,10 +5,13 @@
 <hibernate-configuration>
 	<session-factory>
         <mapping class="by.ulezla.entity.Category"/>
+        <mapping class="by.ulezla.entity.City"/>
         <mapping class="by.ulezla.entity.Comment"/>
         <mapping class="by.ulezla.entity.Coordinate"/>
+        <mapping class="by.ulezla.entity.Country"/>
         <mapping class="by.ulezla.entity.Element"/>
         <mapping class="by.ulezla.entity.Organization"/>
+        <mapping class="by.ulezla.entity.Region"/>
         <mapping class="by.ulezla.entity.Role"/>
         <mapping class="by.ulezla.entity.User"/>
 	</session-factory>

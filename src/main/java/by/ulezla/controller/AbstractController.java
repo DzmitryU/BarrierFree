@@ -26,6 +26,9 @@ public abstract class AbstractController {
     @Autowired
     ElementDAO elementDAO;
 
+    @Autowired
+    CityDAO cityDAO;
+
     public void setRequirements(Model model, Principal principal) {
 
         generateUserInfo(model, principal);
