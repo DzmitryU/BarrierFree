@@ -9,6 +9,8 @@ import java.util.List;
 public class HTreeItem {
     @JsonProperty(value = "nodeId")
     int nodeId;
+    @JsonProperty(value = "id")
+    private String id;
     @JsonProperty(value="text")
     private String text;
     @JsonProperty(value="type")
@@ -23,6 +25,11 @@ public class HTreeItem {
         this.text = text;
         this.type = type;
         this.coordinate = coordinate;
+        String idPrefix = "c";
+        if ("class by.ulezla.entity.Organization".equals(type)) {
+            idPrefix = "o";
+        }
+        this.id = idPrefix + nodeId;
         children = new ArrayList<>();
     }
 
