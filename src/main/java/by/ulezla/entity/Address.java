@@ -22,7 +22,7 @@ public class Address implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-    private Integer house;
+    private String house;
 
     @JsonProperty(value="lat")
 	private double x;
