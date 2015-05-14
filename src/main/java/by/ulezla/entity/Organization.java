@@ -48,7 +48,7 @@ public class Organization implements Serializable {
 
 	//bi-directional many-to-one association to Coordinate
 	@ManyToOne(fetch=FetchType.EAGER)
-	private Coordinate coordinate;
+	private Address address;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -128,12 +128,12 @@ public class Organization implements Serializable {
 		this.category = category;
 	}
 
-	public Coordinate getCoordinate() {
-		return this.coordinate;
+	public Address getAddress() {
+		return this.address;
 	}
 
-	public void setCoordinate(Coordinate coordinate) {
-		this.coordinate = coordinate;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public User getUser() {

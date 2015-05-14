@@ -1,71 +1,70 @@
 package by.ulezla.entity;
 
-import org.springframework.context.annotation.Lazy;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 
 
 /**
  * The persistent class for the country database table.
- * 
+ *
  */
 @Entity
 @NamedQuery(name="Country.findAll", query="SELECT c FROM Country c")
 public class Country implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+    @Id
+    private int id;
 
-	private String name;
+    private String name;
 
-	//bi-directional many-to-one association to Region
-	@OneToMany(mappedBy="country")
-    @Lazy
-	private List<Region> regions;
+    //bi-directional many-to-one association to Region
+    @OneToMany(mappedBy="country")
+    private List<Region> regions;
 
-	public Country() {
-	}
+    public Country() {
+    }
 
-	public int getId() {
-		return this.id;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public List<Region> getRegions() {
-		return this.regions;
-	}
+    public List<Region> getRegions() {
+        return this.regions;
+    }
 
-	public void setRegions(List<Region> regions) {
-		this.regions = regions;
-	}
+    public void setRegions(List<Region> regions) {
+        this.regions = regions;
+    }
 
-	public Region addRegion(Region region) {
-		getRegions().add(region);
-		region.setCountry(this);
+    public Region addRegion(Region region) {
+        getRegions().add(region);
+        region.setCountry(this);
 
-		return region;
-	}
+        return region;
+    }
 
-	public Region removeRegion(Region region) {
-		getRegions().remove(region);
-		region.setCountry(null);
+    public Region removeRegion(Region region) {
+        getRegions().remove(region);
+        region.setCountry(null);
 
-		return region;
-	}
+        return region;
+    }
 
 }

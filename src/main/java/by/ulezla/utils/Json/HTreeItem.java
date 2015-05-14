@@ -1,6 +1,6 @@
 package by.ulezla.utils.Json;
 
-import by.ulezla.entity.Coordinate;
+import by.ulezla.entity.Address;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -18,13 +18,13 @@ public class HTreeItem {
     @JsonProperty(value="children")
     private List<HTreeItem> children;
     @JsonProperty(value="coordinate")
-    private Coordinate coordinate;
+    private Address address;
 
-    public HTreeItem(int nodeId, String text, String type, Coordinate coordinate) {
+    public HTreeItem(int nodeId, String text, String type, Address address) {
         this.nodeId = nodeId;
         this.text = text;
         this.type = type;
-        this.coordinate = coordinate;
+        this.address = address;
         String idPrefix = "c";
         if ("class by.ulezla.entity.Organization".equals(type)) {
             idPrefix = "o";

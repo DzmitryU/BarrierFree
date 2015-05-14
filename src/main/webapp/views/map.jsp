@@ -56,8 +56,8 @@
                     id : ${organization.id},
                     name : "${organization.name}",
                     category : "${organization.category.name}",
-                    lat : ${organization.coordinate.x},
-                    lng : ${organization.coordinate.y},
+                    lat : ${organization.address.x},
+                    lng : ${organization.address.y},
                     displayed: false
                 };
             </c:forEach>

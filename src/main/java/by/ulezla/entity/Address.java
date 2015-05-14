@@ -14,13 +14,15 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Coordinate.findAll", query="SELECT c FROM Coordinate c")
-public class Coordinate implements Serializable {
+@NamedQuery(name="Coordinate.findAll", query="SELECT c FROM Address c")
+public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+
+    private Integer house;
 
     @JsonProperty(value="lat")
 	private double x;
@@ -29,12 +31,18 @@ public class Coordinate implements Serializable {
 	private double y;
 
 	//bi-directional many-to-one association to Organization
-	@OneToMany(mappedBy="coordinate")
+	@OneToMany(mappedBy="address")
     @Lazy
     @JsonIgnore
 	private List<Organization> organizations;
 
-	public Coordinate() {
+    //bi-directional many-to-one association to Street
+    @ManyToOne
+    @Lazy
+    @JsonIgnore
+    private Street street;
+
+	public Address() {
 	}
 
 	public int getId() {
@@ -61,6 +69,14 @@ public class Coordinate implements Serializable {
 		this.y = y;
 	}
 
+    public Street getStreet() {
+        return this.street;
+    }
+
+    public void setStreet(Street street) {
+        this.street = street;
+    }
+
 	public List<Organization> getOrganizations() {
 		return this.organizations;
 	}
@@ -71,14 +87,14 @@ public class Coordinate implements Serializable {
 
 	public Organization addOrganization(Organization organization) {
 		getOrganizations().add(organization);
-		organization.setCoordinate(this);
+		organization.setAddress(this);
 
 		return organization;
 	}
 
 	public Organization removeOrganization(Organization organization) {
 		getOrganizations().remove(organization);
-		organization.setCoordinate(null);
+		organization.setAddress(null);
 
 		return organization;
 	}

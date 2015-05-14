@@ -5,54 +5,80 @@ import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
  * The persistent class for the city database table.
- * 
+ *
  */
 @Entity
 @NamedQuery(name="City.findAll", query="SELECT c FROM City c")
 public class City implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+    @Id
+    private int id;
 
-	private String name;
+    private String name;
 
-	//bi-directional many-to-one association to Region
-	@ManyToOne(fetch=FetchType.LAZY)
+    //bi-directional many-to-one association to Region
+    @ManyToOne
     @Lazy
     @JsonIgnore
-	private Region region;
+    private Region region;
 
-	public City() {
-	}
+    //bi-directional many-to-one association to Street
+    @OneToMany(mappedBy="city")
+    private List<Street> streets;
 
-	public int getId() {
-		return this.id;
-	}
+    public City() {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public Region getRegion() {
-		return this.region;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setRegion(Region region) {
-		this.region = region;
-	}
+    public Region getRegion() {
+        return this.region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public List<Street> getStreets() {
+        return this.streets;
+    }
+
+    public void setStreets(List<Street> streets) {
+        this.streets = streets;
+    }
+
+    public Street addStreet(Street street) {
+        getStreets().add(street);
+        street.setCity(this);
+
+        return street;
+    }
+
+    public Street removeStreet(Street street) {
+        getStreets().remove(street);
+        street.setCity(null);
+
+        return street;
+    }
 
 }
