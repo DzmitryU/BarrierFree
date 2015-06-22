@@ -8,12 +8,14 @@
 <head>
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/map/map.css" type="text/css"
           media="screen">
+    <link rel="stylesheet" href="/<c:out value="${appName}" />/css/map/comments.css" type="text/css"/>
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/tree/style.min.css" type="text/css" />
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/tree/tree.css" type="text/css" />
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/criteria/criteria.css" type="text/css" />
     <link rel="stylesheet" href="/<c:out value="${appName}" />/css/organization/organization-list.css" type="text/css" />
           media="screen">
 
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript"
             src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC332jqOlGw0-FnUh18dekVtwps8nEJRR0&language=ru-RU">
     </script>

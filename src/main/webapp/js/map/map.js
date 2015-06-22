@@ -19,6 +19,13 @@ function initialize() {
     showMarkers();
 }
 
+var tmp;
+var contentString = "<div class='organization-title'>" + this.title + "</div>" +
+    "<div>Отзывы:</div>" +
+    "<div class='user-name'>D d:</div>";
+var inputArea = "<input type='text' id='comment'/>" +
+    "<button name='submitComment' onclick='addComment()'>Отправить</button>";
+
 /**
  * Displays all markers on map.
  */
@@ -31,7 +38,9 @@ function showMarkers() {
 
             marker.setMap(map);
             google.maps.event.addListener(marker, 'click', function () {
-                marker.infoWindow.setContent(this.title);
+
+                tmp = marker;
+                marker.infoWindow.setContent(contentString + inputArea);
                 marker.infoWindow.open(map, this);
             });
 
@@ -42,6 +51,11 @@ function showMarkers() {
             }
         }
     }
+}
+
+function addComment() {
+    var newComment = $("#comment").val();
+    tmp.infoWindow.setContent(contentString + newComment + inputArea);
 }
 
 /**
