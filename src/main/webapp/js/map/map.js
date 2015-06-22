@@ -20,9 +20,7 @@ function initialize() {
 }
 
 var tmp;
-var contentString = "<div class='organization-title'>" + this.title + "</div>" +
-    "<div>Отзывы:</div>" +
-    "<div class='user-name'>D d:</div>";
+var contentString;
 var inputArea = "<input type='text' id='comment'/>" +
     "<button name='submitComment' onclick='addComment()'>Отправить</button>";
 
@@ -40,6 +38,9 @@ function showMarkers() {
             google.maps.event.addListener(marker, 'click', function () {
 
                 tmp = marker;
+                contentString = "<div class='organization-title'>" + this.title + "</div>" +
+                    "<div>Отзывы:</div>" +
+                    "<div class='user-name'>D d:</div>";
                 marker.infoWindow.setContent(contentString + inputArea);
                 marker.infoWindow.open(map, this);
             });
